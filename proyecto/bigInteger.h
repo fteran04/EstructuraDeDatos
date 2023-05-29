@@ -2,29 +2,37 @@
 #define __BIGINTEGER_H
 
 #include <iostream>
-#include <vector>
 #include <string>
+#include <deque>
+#include <vector>
+#include <list>
 
 using namespace std;
 
-class bigInteger{
+class BigInteger{
     private:
+    void addLogic(BigInteger &);
+    void substractLogic(BigInteger &);
+    void addCeros(int);
+    vector<BigInteger> createTable(BigInteger & );
+    int findQuotient(vector<BigInteger> &, BigInteger &);
     bool sign;
-    vector<int> vec;
+    deque<int> deq;
 
     public:
 
     /* Contructoras */
-    bigInteger();
-    bigInteger( string&);
-    bigInteger( bigInteger&);
+    BigInteger(const string &);
+    BigInteger(const BigInteger &);
+    BigInteger(const deque<int> &);
+    BigInteger();
 
     /* Modificadoras */
-    void add(bigInteger &);
-    void product(bigInteger &);
-    void substract(bigInteger &);
-    void quotient(bigInteger &);
-    void remainder(bigInteger &);
+    void add(BigInteger &);
+    void product(BigInteger &);
+    void substract(BigInteger &);
+    void quotient(BigInteger &);
+    void remainder(BigInteger &);
     void pow(int);
 
     /* Analizadoras */
@@ -35,16 +43,18 @@ class bigInteger{
 
     /* Sobrecargas de operadores */
     
-    //bigInteger operator+(bigInteger &bigInt);
-    //bigInteger operator-(bigInteger &bigInt);
-    //bigInteger operator*(bigInteger &bigInt);
-    //bigInteger operator/(bigInteger &bigInt);
-    //bigInteger operator%(bigInteger &bigInt);
-    bool operator==(bigInteger &);
-    bool operator<(bigInteger &);
-    bool operator<=(bigInteger &);
-    
+    BigInteger operator+(BigInteger &);
+    BigInteger operator-(BigInteger &);
+    BigInteger operator*(BigInteger &);
+    BigInteger operator/(BigInteger &);
+    BigInteger operator%(BigInteger &);
+    bool operator==(BigInteger &);
+    bool operator<(BigInteger &);
+    bool operator<=(BigInteger &);
 
+    /* Funciones con listas */
+    static BigInteger sumarListaValores(list<BigInteger> &);
+    static BigInteger multiplicarListaValores(list<BigInteger> &);
 };
 
 #endif
